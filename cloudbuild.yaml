@@ -1,6 +1,6 @@
 substitutions:
   _LOCATION: "asia-east1"
-  _REPOSITORY: "cloudrun-docker-sample"
+  _REPOSITORY: "cloudbuild-docker-sample"
   _IMAGE: "flask-app:latest"
 steps:
 - name: 'gcr.io/cloud-builders/docker'
