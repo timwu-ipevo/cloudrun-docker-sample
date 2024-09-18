@@ -1,8 +1,11 @@
+substitutions:
+  _LOCATION: "asia-east1"
+  _REPOSITORY: "cloudrun-docker-sample"
+  _IMAGE: "flask-app:latest"
 steps:
-- name: 'gcr.io/cloudbuild/docker'
-  args: ['build', '-t', 'asia-east1-docker.pkg.dev/rd-server-391203/cloudrun-docker-sample/flask-app:latest', '.']
-  timeout: '1200s'
-- name: 'gcr.io/cloudbuild/docker'
-  args: ['push', 'asia-east1-docker.pkg.dev/rd-server-391203/cloudrun-docker-sample/flask-app:latest']
-  timeout: '1200s'
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}', '.' ]
+images:
+- '${_LOCATION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/${_IMAGE}'
+
 
